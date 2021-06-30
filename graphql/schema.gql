@@ -1,0 +1,62 @@
+type Event {
+    result: String!
+}
+
+type Person {
+    name: String!
+    city: String!
+    id: ID!
+}
+type Friend {
+    name: String
+    city: String
+    id: ID
+}
+type FriendsOfFriend{
+    name: String!
+    id: String!
+}
+
+type HighestByRating{
+    rating : Int
+    name : String
+    address : String
+    cuisine : String
+    
+}
+
+type HighestRatedByCuisine {
+    name : String
+    address : String
+    rating_average : Int
+    cuisine : String
+}
+
+type newReviews {
+    createdDate: String
+    body: String
+}
+
+
+
+type Query {
+    getPerson: [Person]
+    getFriends: [Friend]
+    getFriendsOfFriend: [FriendsOfFriend]
+    getHighestByRating: [HighestByRating]
+    getNewReviews(restaurant_name:String): [newReviews]
+    getHighestRatedByCuisine : [HighestRatedByCuisine]
+}
+
+type Mutation {
+    addPerson(name: String!, city: String!): Event
+    addFriend(name: String!, city: String!): Event
+    addCity(name:String!): Event
+    addFriendsOfFriend(name: String!, friendName: String!): Event
+    deleteVertices(label: String): Event
+    clearGraph(key: String): Event
+    addRestaurant(name: String, cuisine: String): Event
+    addReview(nameOfCustomer: String, rating: Int, body: String, restaurant_name: String): Event
+    addCuisine(name : String):Event
+    addState(name:String):Event
+}
